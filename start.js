@@ -10,8 +10,8 @@ module.exports = {
           'lms server stop',
           'lms server start --cors',
           '{{which("lms")}} unload --all',
-          '{{which("lms")}} get lex-au/Orpheus-3b-FT-Q8_0.gguf -y',
-          '{{which("lms")}} load lex-au/Orpheus-3b-FT-Q8_0.gguf -y'
+          '{{which("lms")}} get orpheus-3b-ft.gguf -y',
+          '{{which("lms")}} load orpheus-3b-ft.gguf -y'
         ]
       }
     },
