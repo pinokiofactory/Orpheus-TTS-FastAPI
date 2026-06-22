@@ -12,17 +12,6 @@ module.exports = {
       }
     },
     {
-      method: "script.start",
-      params: {
-        uri: "torch.js",
-        params: {
-          venv: "env",
-          path: "app",
-          // xformers: true
-        }
-      }
-    },
-    {
       method: "shell.run",
       params: {
         venv: "env",
@@ -31,6 +20,17 @@ module.exports = {
           "uv pip install gradio devicetorch",
           "uv pip install -r requirements.txt"
         ]
+      }
+    },
+    {
+      method: "script.start",
+      params: {
+        uri: "torch.js",
+        params: {
+          venv: "env",
+          path: "app",
+          // xformers: true
+        }
       }
     }
   ]

@@ -13,7 +13,7 @@ module.exports = {
           'lms server stop',
           'lms server start --cors',
           '{{which("lms")}} unload --all',
-          '{{which("lms")}} get orpheus-3b-ft.gguf -y',
+          '{{which("lms")}} get https://huggingface.co/lex-au/Orpheus-3b-FT-Q8_0.gguf/resolve/main/Orpheus-3b-FT-Q8_0.gguf -y',
           '{{which("lms")}} load orpheus-3b-ft.gguf -y'
         ]
       }
@@ -21,16 +21,16 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        venv: "env",                // Edit this to customize the venv folder path
-        env: { },                   // Edit this to customize environment variables (see documentation)
-        path: "app",                // Edit this to customize the path to start the shell from
+        venv: "env",
+        env: { },
+        path: "app",
         message: [
           "python app.py",
         ],
         on: [{
           // "event": "/http:\/\/\\S+/",   
           // "event": "/http:\/\/[0-9.:]+/",
-          "event": "/Web UI available at (http:\/\/localhost:[0-9]+)/",
+          "event": "/Application startup complete/",
           "done": true
         }]
       }
@@ -38,20 +38,8 @@ module.exports = {
     {
       method: "local.set",
       params: {
-        temp_url: "{{input.event[1]}}"
+        url: "http://localhost:5005"
       }
-    },
-    {
-      method: "process.wait",
-      params: {
-        uri: "{{local.temp_url}}"
-      }
-    },
-    {
-      method: "local.set",
-      params: {
-        url: "{{local.temp_url}}"
-      }
-    },
+    }
   ]
 }
